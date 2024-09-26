@@ -1,0 +1,488 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #70e1f5, #ffd194);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #41424C;
+    height: 80px; /* Fixed height for the header */
+    padding: 0 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center; /* Centers content vertically */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo {
+    flex: 1; /* Ensures the logo is aligned to the left */
+}
+
+.logo img {
+    width: 200px; /* Adjust this value to your desired width */
+    height: auto; /* Maintain aspect ratio */
+}
+
+nav {
+    flex: 2; /* Allows navigation to take up space between logo and button */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    justify-content: center; /* Centers the navigation items */
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #00C3FF;
+}
+
+.cta-button {
+    background-color: #00C3FF;
+    color: #ffffff;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.cta-button:hover {
+    background-color: #00A3D3;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    nav ul {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+}
+
+.video-section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    background-size: cover;
+    filter: brightness(0.7);
+}
+
+.video-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 1;
+}
+
+.video-overlay h1 {
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.video-overlay p {
+    font-size: 1.2rem;
+}
+
+.schedule-button {
+    display: inline-block;
+    padding: 16px 32px;
+    background-color: #ff3300;
+    color: #ffffff;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+}
+
+.schedule-button:hover {
+    background-color: #00A3D3;
+}
+
+@media (max-width: 768px) {
+    .video-overlay h1 {
+        font-size: 2.5rem;
+    }
+
+    .video-overlay p {
+        font-size: 1.2rem;
+    }
+
+    .schedule-button {
+        padding: 14px 28px;
+        font-size: 1.1rem;
+    }
+}
+
+.services-section {
+    position: relative; /* Make sure the section is positioned relative to add background shapes */
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #1e3c72, #2a5298, #f37335, #f1c40f); /* Same gradient background */
+    color: #fff;
+    overflow: hidden; /* Ensures background shapes stay within the section */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-item {
+    background: linear-gradient(135deg, #f06c64, #f9a35e);
+    border-radius: 15px;
+    padding: 40px 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    color: #fff;
+    opacity: 0; /* Hidden initially */
+    transform: translateY(20px); /* Move up into position on scroll */
+    transition: all 0.6s ease; /* Smooth transition for the fade-in effect */
+}
+
+.service-item h3 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+.service-item p {
+    font-size: 1rem;
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover .service-icon {
+    transform: scale(1.1); /* Enlarge icon on hover */
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .service-item {
+        padding: 30px 15px;
+    }
+}
+
+/* Animation when items enter viewport */
+.service-item.is-visible {
+    opacity: 1; /* Fade in */
+    transform: translateY(0); /* Move into position */
+}
+
+/* Background Shape Styles */
+.shape {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1); /* White with slight transparency */
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite; /* Floating animation for the shapes */
+}
+
+.shape.shape1 {
+    width: 150px;
+    height: 150px;
+    top: -50px;
+    left: 50px;
+}
+
+.shape.shape2 {
+    width: 100px;
+    height: 100px;
+    bottom: 100px;
+    right: 80px;
+}
+
+.shape.shape3 {
+    width: 200px;
+    height: 200px;
+    top: 100px;
+    right: 200px;
+}
+
+.shape.shape4 {
+    width: 120px;
+    height: 120px;
+    bottom: -60px;
+    left: 100px;
+}
+
+/* Floating Animation */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(20px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* Existing service-item and other styles stay the same */
+
+.testimonials-section {
+    padding: 60px 20px;
+    background: linear-gradient(to left, #9796f0, #fbc7d4); /* Gradient background matching the theme */
+    color: #fff;
+    text-align: center;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.testimonial-item {
+    background: #ffffff;
+    color: #333;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    position: relative;
+}
+
+.client-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    object-fit: cover;
+    border: 3px solid #00C3FF; /* Accent color for border */
+}
+
+.testimonial-text {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.client-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.client-position {
+    color: #555;
+}
+
+.testimonial-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .testimonial-item {
+        padding: 20px;
+    }
+
+    .testimonial-text {
+        font-size: 1rem;
+    }
+
+    .client-name {
+        font-size: 1rem;
+    }
+}
+
+.team-slider-section {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    padding: 50px 0;
+    text-align: center;
+    position: relative;
+}
+
+.team-slider {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.team-slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.team-slide.active {
+    display: block;
+    opacity: 1;
+}
+
+.member-photo img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.member-info {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.member-info h3 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.member-info p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.slider-controls {
+    margin-top: 30px;
+}
+
+.prev-btn, .next-btn {
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    color: #fff;
+    transition: background-color 0.3s;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.team-section {
+    position: relative;
+    padding: 100px 0;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    overflow: hidden; /* To contain background shapes */
+}
+
+.background-shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ensures shapes don't interfere with user interactions */
+}
+
+.shape {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle white color with opacity */
+    border-radius: 50%;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    left: 5%;
+    background: rgba(0, 195, 255, 0.3); /* Soft blue */
+}
+
+.shape-2 {
+    width: 200px;
+    height: 200px;
+    bottom: 15%;
+    right: 10%;
+    background: rgba(255, 51, 0, 0.3); /* Soft red */
+}
+
+.shape-3 {
+    width: 150px;
+    height: 150px;
+    top: 50%;
+    left: 40%;
+    background: rgba(0, 163, 211, 0.3); /* Soft cyan */
+    z-index: -1; /* Ensures it stays behind other content */
+}
+
+.slider {
+    position: relative;
+    z-index: 1; /* Ensures slider content stays above the background shapes */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
