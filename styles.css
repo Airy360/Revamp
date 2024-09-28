@@ -486,3 +486,30 @@ nav ul li a:hover {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .service-item, .testimonial-item, .team-item {
+        width: 100%; /* Make items take full width on mobile */
+        margin-bottom: 20px;
+    }
+
+    .video-overlay h1 {
+        font-size: 2.5rem;
+    }
+
+    .video-overlay p {
+        font-size: 1.2rem;
+    }
+
+    .schedule-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr; /* Make grid items stack */
+    }
+}
